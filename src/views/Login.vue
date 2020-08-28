@@ -23,6 +23,15 @@
                     <el-button type="primary" @click="onSubmit">登录</el-button>
                 </el-form-item>
             </el-form>
+            <div class="auth_box">
+                <ul>
+                    <li class="iconfont icon-github">
+                        <a href="http://127.0.0.1:7001/github"></a>
+                    </li>
+                    <li class="iconfont icon-QQ" style="color: deepskyblue"></li>
+                    <li class="iconfont icon-weixin" style="color: green"></li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -32,17 +41,16 @@
     import {Vue, Component, Ref} from 'vue-property-decorator'
     import {ElForm} from "element-ui/types/form";
     import {loginUser} from "../api/index";
-    import da from "element-ui/src/locale/lang/da";
     @Component({
         name:"Login",
         components:{}
     })
     export default class Login extends Vue {
         private loginData={
-            username:'',
+            username:'tanwenchao',
             email:'',
             phone:'',
-            password:'',
+            password:'xiabao521..01',
             captcha:'',
             registerType:''
         };
@@ -106,11 +114,11 @@
             this.form.validate((flag:any)=>{
                 if (flag){
                     loginUser(this.loginData).then((data:any)=>{
-                        if (data.code === 200){
+                        if (data.data.code === 200){
                             console.log(data);
                             let token = data.data.token;
-                            window.sessionStorage.setItem('token',token)
-                            // this.$router.push('/admin')
+                            // window.sessionStorage.setItem('token',token)
+                            this.$router.push('/admin')
                         }else {
                             (this as any).$message.error(data.message);
                             this.undateCaptcha();
@@ -144,7 +152,7 @@
         align-items: center;
         .login_box{
             width: 500px;
-            height: 400px;
+            height: 450px;
             background: #f7f7f7;
             border-radius: 15px;
             display: flex;
@@ -153,6 +161,34 @@
             align-items: center;
             h1{
                 margin: 40px 0 40px 0;
+            }
+            .el-button{
+                width: 100%;
+            }
+            .captcha{
+                width: 100%;
+                height: 40px;
+            }
+            .auth_box{
+                ul{
+                    list-style: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    li{
+                        font-size: 30px;
+                        margin-right: 20px;
+                        position: relative;
+                        a{
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,18 +1,15 @@
-
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div></div>
 </template>
 
-<script>
+<script lang="ts">
 
     import {Vue,Component} from 'vue-property-decorator'
     @Component({
-        name:"App",
+        name:"Rights",
         components:{}
     })
-    export default class App extends Vue {
+    export default class Rights extends Vue {
 
     }
 </script>

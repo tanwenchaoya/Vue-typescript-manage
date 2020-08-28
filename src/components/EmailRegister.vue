@@ -121,7 +121,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .el-tabs__nav-scroll{
         display: flex;
         justify-content: center;

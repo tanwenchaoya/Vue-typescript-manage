@@ -123,7 +123,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .captcha{
         width: 100%;
         height: 40px;
